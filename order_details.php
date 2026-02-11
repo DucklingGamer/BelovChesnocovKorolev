@@ -38,18 +38,24 @@ if (!$order) {
     <title>🌸 Детали заказа #<?= $order_id ?> - Кавай Магазин</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="theme.js" defer></script>
+    <!-- В index.php в секции head -->
+<script src="theme.js" defer></script>
 </head>
 <body>
-    <div class="menu">
-        <nav class="menu-nav">
-            <a href="index.php"><i class="fas fa-home"></i> Главная</a>
-            <a href="clients.php"><i class="fas fa-users"></i> Клиенты</a>
-            <a href="categories.php"><i class="fas fa-tags"></i> Категории</a>
-            <a href="products.php"><i class="fas fa-box-open"></i> Товары</a>
-            <a href="services.php"><i class="fas fa-concierge-bell"></i> Услуги</a>
-            <a href="orders.php"><i class="fas fa-shopping-cart"></i> Заказы</a>
-        </nav>
-    </div>
+   <div class="menu">
+    <nav class="menu-nav">
+        <a href="index.php"><i class="fas fa-home"></i> Главная</a>
+        <a href="clients.php"><i class="fas fa-users"></i> Клиенты</a>
+        <a href="categories.php"><i class="fas fa-tags"></i> Категории</a>
+        <a href="products.php"><i class="fas fa-box-open"></i> Товары</a>
+        <a href="services.php"><i class="fas fa-concierge-bell"></i> Услуги</a>
+        <a href="orders.php"><i class="fas fa-shopping-cart"></i> Заказы</a>
+        <a href="logout.php" class="logout-btn" style="background: linear-gradient(145deg, #ff4d6d, #c9184a); color: white; margin-left: auto;">
+            <i class="fas fa-sign-out-alt"></i> Выход
+        </a>
+    </nav>
+</div>
     
     <div class="container">
         <h1><i class="fas fa-file-invoice"></i> Детали заказа #<?= $order_id ?></h1>

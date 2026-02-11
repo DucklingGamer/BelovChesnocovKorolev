@@ -9,6 +9,7 @@ require 'config.php';
     <title>🌸 Кавай Магазин 🍥</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="theme.js" defer></script>
 </head>
 <body>
     <div class="menu">
@@ -19,13 +20,22 @@ require 'config.php';
             <a href="products.php"><i class="fas fa-box-open"></i> Товары</a>
             <a href="services.php"><i class="fas fa-concierge-bell"></i> Услуги</a>
             <a href="orders.php"><i class="fas fa-shopping-cart"></i> Заказы</a>
+            <a href="logout.php" class="logout-btn" style="background: linear-gradient(145deg, #ff4d6d, #c9184a); color: white; margin-left: auto;">
+                <i class="fas fa-sign-out-alt"></i> Выход
+            </a>
         </nav>
     </div>
     
     <div class="container">
         <div class="anime-header">
             <div class="anime-logo">カワイイ ショップ</div>
-            <div class="anime-subtitle">АНИМЕ МАГАЗИН ✨ НЯ~</div>
+            <div class="anime-subtitle">Кавайный магазин</div>
+        </div>
+        
+        <div style="text-align: center; margin: 20px 0; padding: 15px; background: var(--pink-light); border-radius: 15px;">
+            <p style="margin: 0; color: var(--purple-magical);">
+                <i class="fas fa-user"></i> Вы вошли как: <strong><?= htmlspecialchars($_SESSION['username'] ?? 'Гость') ?></strong>
+            </p>
         </div>
         
         <div class="stats-grid">
@@ -98,6 +108,55 @@ require 'config.php';
             </div>
         </div>
         
+        <h2><i class="fas fa-boxes"></i> Наши товары</h2>
+        <?php
+        // Получаем последние товары (до 12 штук)
+        $products = $pdo->query("
+            SELECT p.*, c.category_name 
+            FROM products p 
+            LEFT JOIN categories c ON p.category_id = c.category_id 
+            WHERE p.is_available = 1 
+            ORDER BY p.product_id DESC 
+            LIMIT 12
+        ")->fetchAll();
+        
+        if (count($products) > 0): ?>
+        <div class="products-grid">
+            <?php foreach ($products as $product): ?>
+            <div class="product-card">
+                <div class="product-image">
+                    <?php if ($product['image_url']): ?>
+                        <img src="<?= $product['image_url'] ?>" alt="<?= htmlspecialchars($product['product_name']) ?>">
+                    <?php else: ?>
+                        <div class="no-image">
+                            <i class="fas fa-image"></i>
+                            <span>Нет фото</span>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($product['stock_quantity'] == 0): ?>
+                        <div class="out-of-stock">Нет в наличии</div>
+                    <?php endif; ?>
+                </div>
+                <div class="product-info">
+                    <h3><?= htmlspecialchars($product['product_name']) ?></h3>
+                    <div class="product-category"><?= htmlspecialchars($product['category_name'] ?? 'Без категории') ?></div>
+                    <div class="product-description"><?= htmlspecialchars(substr($product['description'] ?? '', 0, 60)) ?>...</div>
+                    <div class="product-footer">
+                        <div class="product-price"><?= number_format($product['price'], 2) ?> руб</div>
+                        <div class="product-stock <?= $product['stock_quantity'] > 0 ? 'in-stock' : 'out-stock' ?>">
+                            <?= $product['stock_quantity'] ?> шт.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+        <?php else: ?>
+        <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle"></i> Пока нет товаров. Добавьте первый товар!
+        </div>
+        <?php endif; ?>
+        
         <h2><i class="fas fa-history"></i> Последние заказы</h2>
         <?php
         $recent_orders = $pdo->query("
@@ -136,6 +195,21 @@ require 'config.php';
             <i class="fas fa-exclamation-triangle"></i> Пока нет заказов. Создайте первый заказ!
         </div>
         <?php endif; ?>
+        
+        <!-- Футер с авторами -->
+        <footer class="authors-footer">
+            <div class="footer-content">
+                <div class="footer-title">Разработано:</div>
+                <div class="authors-list">
+                    <span class="author">Королев</span>
+                    <span class="separator">•</span>
+                    <span class="author">Белов</span>
+                    <span class="separator">•</span>
+                    <span class="author">Чесноков</span>
+                </div>
+                <div class="footer-subtitle">🌸 Кавай Магазин 🍥 © 2024</div>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
