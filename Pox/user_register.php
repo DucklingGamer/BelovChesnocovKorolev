@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="theme.js" defer></script>
 </head>
 <body>
-    <div class="login-container" style="max-width: 500px;">
+    <div class="login-container" style="max-width: 500px, margin: 50px auto;">
         <div class="anime-header">
             <div class="anime-logo">🌸 Регистрация</div>
         </div>
