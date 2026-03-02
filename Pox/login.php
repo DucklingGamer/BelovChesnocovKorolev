@@ -112,6 +112,7 @@ try {
         .login-header {
             text-align: center;
             margin-bottom: 30px;
+            
         }
         
         .login-logo {
@@ -233,9 +234,9 @@ try {
 </head>
 <body>
     <div class="login-container">
-        <div class="login-header">
-            <div class="login-logo">カワイイ ショップ</div>
-            <div class="login-subtitle">Авторизация</div>
+        <div class="anime-header">
+            <div class="anime-logo">🌸 Магазин</div>
+            <div class="anime-subtitle">Вход для покупателей</div>
         </div>
         
         <?php if (!$table_exists): ?>
@@ -269,7 +270,7 @@ try {
             
             <form method="POST" id="loginForm">
                 <div class="form-group">
-                    <label><i class="fas fa-user"></i> Имя пользователя</label>
+                    <label><i class="fas fa-user"></i> Логин администратора</label>
                     <input type="text" name="username" placeholder="Введите ваш логин" required
                            class="<?= $error ? 'shake' : '' ?>" autofocus>
                 </div>
@@ -284,21 +285,25 @@ try {
                     <i class="fas fa-sign-in-alt"></i> Войти в систему
                 </button>
             </form>
-        </div>
-        <?php endif; ?>
-        
-        <div class="login-footer">
+            <div class="login-footer">
             <div>
                 <p><i class="fas fa-info-circle"></i> Для доступа к системе необходима авторизация</p>
             </div>
             <?php if ($table_exists): ?>
                 <div>
                     <a href="create_users_table.php">
-                        <i class="fas fa-user-plus"></i> Зарегистрировать нового пользователя
+                        <i class="fas fa-user-plus: margin-top: 12px; "></i> Зарегистрировать администратора
                     </a>
                 </div>
-            <?php endif; ?>
+                <?php endif; ?>
+                    <div style="text-align: center; margin-top: 12px;">
+                        <a href="user_login.php" style="color: var(--red-heart);">
+                            <i class="fas fa-sign-in-alt"></i> Вход для пользователя
+                        </a>
+                    </div>
+            </div>
         </div>
+        <?php endif; ?>
         
         <!-- Анимация фона -->
         <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: -1; pointer-events: none;">
