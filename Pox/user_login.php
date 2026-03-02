@@ -71,9 +71,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </button>
             </form>
             
-            <div style="text-align: center; margin-top: 20px;">
-                <p>Нет аккаунта? <a href="user_register.php">Зарегистрироваться</a></p>
-                <p><a href="login.php">👉 Вход для администратора</a></p>
+            <div class="login-footer" style="margin-top: 25px;">
+                <div>
+                    <a href="user_register.php"><i class="fas fa-user-plus"></i> Нет аккаунта? Зарегистрироваться</a>
+                </div>
+                <div>
+                    <a href="login.php"><i class="fas fa-user-shield"></i> Вход для администратора</a>
+                </div>
             </div>
         </div>
     </div>
