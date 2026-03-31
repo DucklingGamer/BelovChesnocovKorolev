@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 Отчет тестирования БД - Кавай Магазин</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #764ba2;
+            margin-top: 0;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .summary-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .summary-card.success { background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); }
+        .summary-card.error { background: linear-gradient(135deg, #f56565 0%, #c53030 100%); }
+        .summary-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .database-card {
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .database-card.success { border-left: 5px solid #48bb78; }
+        .database-card.error { border-left: 5px solid #f56565; }
+        .database-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .table-list {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .table-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        .badge-success { background: #48bb78; color: white; }
+        .badge-warning { background: #fbbf24; color: white; }
+        .badge-error { background: #f56565; color: white; }
+        .timestamp {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Отчет тестирования подключения к БД</h1>
+        
+        <div class="summary">
+            <div class="summary-card">
+                <div>Всего тестов</div>
+                <div class="summary-number">3</div>
+            </div>
+            <div class="summary-card success">
+                <div>Успешно</div>
+                <div class="summary-number">3</div>
+            </div>
+            <div class="summary-card error">
+                <div>Ошибок</div>
+                <div class="summary-number">0</div>
+            </div>
+        </div>
+        
+        <div class="timestamp">
+            Тест запущен: 18.03.2026 10:34:45<br>
+            Тест завершен: 18.03.2026 10:34:45
+        </div>
+
+        <div class="database-card success">
+            <div class="database-title">Локальная БД (Bd_belov)</div>
+            <div><strong>Статус:</strong> <span class="badge badge-success">✅ Подключено</span></div>
+            <div><strong>Время подключения:</strong> 0.001 сек</div>
+            <div><strong>Подключено, таблиц: 3</strong></div>
+
+            <div class="table-list">
+                <strong>Таблицы:</strong>
+
+                <div class="table-item">
+                    <span>📊 clients</span>
+                    <span class="badge badge-success">0 записей</span>
+                </div>
+
+                <div class="table-item">
+                    <span>📊 site_users</span>
+                    <span class="badge badge-success">6 записей</span>
+                </div>
+
+                <div class="table-item">
+                    <span>📊 users</span>
+                    <span class="badge badge-success">5 записей</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="database-card success">
+            <div class="database-title">БД каталога (project_Chesnokov)</div>
+            <div><strong>Статус:</strong> <span class="badge badge-success">✅ Подключено</span></div>
+            <div><strong>Время подключения:</strong> 0.013 сек</div>
+            <div><strong>Подключено, таблиц: 7</strong></div>
+
+            <div class="table-list">
+                <strong>Таблицы:</strong>
+
+                <div class="table-item">
+                    <span>📊 products</span>
+                    <span class="badge badge-success">2 записей</span>
+                </div>
+
+                <div class="table-item">
+                    <span>📊 categories</span>
+                    <span class="badge badge-success">11 записей</span>
+                </div>
+
+                <div class="table-item">
+                    <span>📊 additional_services</span>
+                    <span class="badge badge-success">1 записей</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="database-card success">
+            <div class="database-title">БД заказов (project_Belov)</div>
+            <div><strong>Статус:</strong> <span class="badge badge-success">✅ Подключено</span></div>
+            <div><strong>Время подключения:</strong> 0.014 сек</div>
+            <div><strong>Подключено, таблиц: 23</strong></div>
+
+            <div class="table-list">
+                <strong>Таблицы:</strong>
+
+                <div class="table-item">
+                    <span>📊 clients</span>
+                    <span class="badge badge-success">3 записей</span>
+                </div>
+
+                <div class="table-item">
+                    <span>📊 orders</span>
+                    <span class="badge badge-success">3 записей</span>
+                </div>
+
+                <div class="table-item">
+                    <span>📊 order_items</span>
+                    <span class="badge badge-success">4 записей</span>
+                </div>
+
+                <div class="table-item">
+                    <span>📊 order_services</span>
+                    <span class="badge badge-success">0 записей</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
